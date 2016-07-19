@@ -64,6 +64,7 @@ var game = cc.Layer.extend({
     this.scheduleUpdate();
     //小惑星の生成で追加
     this.schedule(this.addAsteroid, 0.5);
+    this.schedule(this.addAsteroid2, 0.5);
     //ここからパーティクルの設定
     emitter = cc.ParticleSun.create();
     this.addChild(emitter, 1);
@@ -197,8 +198,13 @@ var Asteroid2 = cc.Sprite.extend({
   },
   onEnter: function() {
     this._super();
+<<<<<<< HEAD
     this.setPosition(600, 200);
     var moveAction = cc.MoveTo.create(10, new cc.Point(-100, Math.random() * 100));
+=======
+    this.setPosition(400, 500);
+    var moveAction = cc.MoveTo.create(8, new cc.Point(-100, Math.random() * 5000));
+>>>>>>> 824d0627ee8ff7a870845159cff11162dfc1f01a
     this.runAction(moveAction);
     this.scheduleUpdate();
   },
@@ -235,8 +241,13 @@ var Asteroid = cc.Sprite.extend({
   },
   onEnter: function() {
     this._super();
+<<<<<<< HEAD
     this.setPosition(600, -200);
     var moveAction = cc.MoveTo.create(10, new cc.Point(-100, Math.random() * 100));
+=======
+    this.setPosition(400, 100);
+    var moveAction = cc.MoveTo.create(8, new cc.Point(-100, Math.random() * -500));
+>>>>>>> 824d0627ee8ff7a870845159cff11162dfc1f01a
     this.runAction(moveAction);
     this.scheduleUpdate();
   },
