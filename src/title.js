@@ -1,14 +1,19 @@
-var gameoverLayer = cc.Layer.extend({
+//title
+var ThirdLayer = cc.Layer.extend({
     ctor: function() {
         this._super();
         var size = cc.director.getWinSize();
+        // 画像の追加
+        var sprite = cc.Sprite.create(res.title_png);
+        sprite.setPosition(size.width / 2, size.height / 2);
+        sprite.setScale(0.8);
+        this.addChild(sprite, 0);
 
-        var label = cc.LabelTTF.create("Game Over!!", "Arial", 50);
-        label.setPosition(size.width / 2, size.height * 3 / 6);
-        this.addChild(label, 1);
-        gameoverText = cc.LabelTTF.create("タッチしてコンテニュー", "Arial", 32);
-        this.addChild(gameoverText);
-        gameoverText.setPosition(size.width / 2, size.height * 2 / 6);
+        var sprite = cc.Sprite.create(res.start_png);
+        sprite.setPosition(size.width / 2, size.height / 6);
+        sprite.setScale(0.8);
+        this.addChild(sprite, 1);
+
         // タップイベントリスナーを登録する
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -27,17 +32,16 @@ var gameoverLayer = cc.Layer.extend({
         cc.director.runScene(new gameScene());
     },
 });
-
-
-var gameover = cc.Scene.extend({
+var TitleScene = cc.Scene.extend({
     onEnter: function() {
         this._super();
 
         // 背景レイヤーをその場で作る
-        var backgroundLayer = new cc.LayerColor(new cc.Color(0, 200, 140, 128));
+        var backgroundLayer = new cc.LayerColor(new cc.Color(0, 50, 255, 128));
         this.addChild(backgroundLayer);
         //ラベルとタップイベント取得
-        var layer3 = new gameoverLayer();
+        var layer3 = new ThirdLayer();
         this.addChild(layer3);
+
     }
 });
